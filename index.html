@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LCD Lamp</title>
+        <meta name="description" content="LCD Lamp">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <pre>Choose a colour: </pre>
+        <input type="color" id="picker" alt="Click me" />
+
+        <script>
+            if (localStorage['lcd_lamp_colour']) {
+                document.getElementById('picker').value = localStorage['lcd_lamp_colour'];
+                document.body.style['background-color'] = localStorage['lcd_lamp_colour'];
+            }
+
+            document.getElementById('picker').addEventListener('change', c => {
+                document.body.style['background-color'] = c.srcElement.value;
+                localStorage.setItem('lcd_lamp_colour', c.srcElement.value);
+            })
+        </script>
+    </body>
+</html>
